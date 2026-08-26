@@ -81,7 +81,6 @@ namespace UnityMugen.CustomInput
             }
         }
 
-        [SerializeField]
         private class Selection
         {
             public const int NONE = -1;

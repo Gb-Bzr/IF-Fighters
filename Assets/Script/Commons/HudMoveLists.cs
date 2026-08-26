@@ -193,7 +193,7 @@ namespace UnityMugen.Interface
         // Update is called once per frame
         void Update()
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.T))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Return))
             {
                 if (currentMoveListActive == 0)
                     currentMoveListActive = 1;
