@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 
-public class MouseDisable : MonoBehaviour
+public class EsconderMouse : MonoBehaviour
 {
     void Start()
     {
-        //   Cursor.visible = false;
-        //   Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
-
 }
