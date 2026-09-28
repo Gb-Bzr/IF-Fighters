@@ -2,7 +2,7 @@
 M.U.G.E.N ver 1.1.0 Beta 1 P1 (2013.08.11) status log
 ---------------------------------------------------
 Parsing command line...
-Command line: C:\Users\Pietro Bonavita\Downloads\mugen-1.1b1-20260928T222429Z-1-001\mugen-1.1b1\mugen.exe
+Command line: D:\IF-Fighters\mugen-1.1b1\mugen.exe
 Parse command line OK
 Initializing...
 Allocating game variables
@@ -17,7 +17,7 @@ Initializing graphics...gameCoord 1280x720...render mode 2_20...trying 1280x720x
 Setting callbacks...OK
 Initializing font...OK
 Initializing game variables...OK
-Session RNG seed is 1790634367
+Session RNG seed is 1790639778
 Loading system fonts...OK
 Loading options...
 Initializing pads...failed
@@ -78,6 +78,22 @@ Game loop init
 Mode select init
 End of mode select loop
 Game loop deinit
+Gameflow 5
+Entering options screen.
+Unloading match assets
+Freeing players
+Game loop init
+Options screen init
+End of options screen loop
+Game loop deinit
+Gameflow 4
+Entering mode select.
+Unloading match assets
+Freeing players
+Game loop init
+Mode select init
+End of mode select loop
+Game loop deinit
 Gameflow 6
 Reset persist vars team 0
 Reset persist vars team 1
@@ -88,10 +104,10 @@ Freeing players
 Game loop init
 Unreserved all palettes
 Charsel init
-Selected char 0 on teamslot 0.0
-Char kfm.def (0) request pal 4 3F (3F) -> reserved 4 (2F)
 Selected char 0 on teamslot 1.0
-Char kfm.def (0) request pal 2 3F (2F) -> reserved 2 (2B)
+Char kfm.def (0) request pal 1 3F (3F) -> reserved 1 (3D)
+Selected char 0 on teamslot 0.0
+Char kfm.def (0) request pal 0 3F (3D) -> reserved 0 (3C)
 End of charsel loop
 Game loop deinit
 Gameflow 8
@@ -109,8 +125,9 @@ Loading match assets...
 Loading stage...
   Loading BG...OK
 Stage loaded OK
+Setting game resolution 1280x960...OK
   Allocating helpers...OK
-Match RNG seed: 17864036
+Match RNG seed: 1630563358
 Reset persist vars team 0
 Reset persist vars team 1
 Loading character chars/kfm/kfm.def...
@@ -126,18 +143,17 @@ Loading character chars/kfm/kfm.def...
   Loading learned AI kfm.ai...OK
   3012 expressions (979 on trigger lines)
 Character kfm.def loaded OK
-New char Aluno Genérico loaded into cache: (1/4 cached) Load time: 120.000ms
+New char Aluno Genérico loaded into cache: (1/4 cached) Load time: 30.000ms
 Player Aluno Genérico cache count increased: 2
 Resetting round
 Match assets initialized OK
 Game loop init
 Match loop init
-CloseWindow event forced common loop quit.
 End of match loop
-Total time: 7.96s
-Total frames: 475 	Skipped frames: 0
-Avg game rate: 59.67
-Avg frame rate: 59.67
+Total time: 32.52s
+Total frames: 1952 	Skipped frames: 0
+Avg game rate: 60.02
+Avg frame rate: 60.02
 
 Finishing match
 Freeing players
@@ -152,6 +168,7 @@ Reset persist vars team 0
 Reset persist vars team 1
 Gameflow 7
 Entering character select.
+Setting game resolution 1280x720...OK
 Unloading match assets
 Freeing players
 Unloading stage...OK
@@ -170,9 +187,9 @@ End of mode select loop
 Game loop deinit
 Returned from gameflow loop
 Deinitializing...
-Frames      : 856
-Time elapsed: 14.380 sec
-ticks: 1438, tps: 100, start 83, end 1521
+Frames      : 2976
+Time elapsed: 49.700 sec
+ticks: 4970, tps: 100, start 61, end 5031
 
 Unloading match assets
 Freeing players
