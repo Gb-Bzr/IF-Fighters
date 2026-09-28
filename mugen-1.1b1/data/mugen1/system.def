@@ -48,6 +48,9 @@ font4 = arcade.def
 font5 = mssansserif-tt36.def
 ;font5.height = 36         ;Uncomment to override the size of the font (Truetype fonts only)
 font6 = infofont.def
+font7 = boldpixels32.def   ;BoldPixels 32px (nomes, fases, textos)
+font8 = boldpixels48.def   ;BoldPixels 48px (nomes dos personagens)
+font9 = boldpixels64.def   ;BoldPixels 64px (titulos de tela)
 
 ; Load alternative victory quote font (font5) if language is "ja".
 [ja.Files]
@@ -66,6 +69,9 @@ font5 = msgothic-tt36.def
 ;font5.height = 36         ;Uncomment to override the size of the font (Truetype fonts only)
 font6 = msgothic-tt36.def
 font6.height = 13
+font7 = boldpixels32.def
+font8 = boldpixels48.def
+font9 = boldpixels64.def
 
 ;----------------------------
 [Music]
@@ -106,30 +112,30 @@ victory.bgm.loopend =
 [Title Info]
 fadein.time = 10
 fadeout.time = 10
-menu.pos = 640,380
-menu.item.font = 4,0,0
-menu.item.active.font = 4,5,0, 224,240,240
-menu.item.spacing = 0, 54
+menu.pos = 211,374   ;referencia dos itens (botoes: x 190..472, y 330..387 + 64*n; centralizados embaixo do logo)
+menu.item.font = 5,0,1
+menu.item.active.font = 5,5,1
+menu.item.spacing = 0, 64
 ; Names for each of the items in the menu. Names must be in quotes.
 ; Use "" to disable an item. If all are disabled, goes straight to demo mode
 ; (hold Esc to quit demos).
-menu.itemname.arcade = "ARCADE"
-menu.itemname.versus = "VS MODE"
-menu.itemname.teamarcade = "TEAM ARCADE"
-menu.itemname.teamversus = "TEAM VS"
-menu.itemname.teamcoop = "TEAM CO-OP"
-menu.itemname.survival = "SURVIVAL"
-menu.itemname.survivalcoop = "SURVIVAL CO-OP"
-menu.itemname.training = "TRAINING"
-menu.itemname.watch = "WATCH"
-menu.itemname.options = "OPTIONS"
-menu.itemname.exit = "EXIT"
+menu.itemname.arcade = ""
+menu.itemname.versus = " "   ;texto invisivel: o texto real (fonte pixelada) esta desenhado no fundo (sprites 320,0/1/2)
+menu.itemname.teamarcade = ""
+menu.itemname.teamversus = ""
+menu.itemname.teamcoop = ""
+menu.itemname.survival = ""
+menu.itemname.survivalcoop = ""
+menu.itemname.training = ""
+menu.itemname.watch = ""
+menu.itemname.options = " "
+menu.itemname.exit = " "
 ; These parameters define the window in which the items are visible
 ; in.
 menu.window.margins.y = 40, 34
 menu.window.visibleitems = 5
 menu.boxcursor.visible = 1     ;Set to 0 to disable default cursor display
-menu.boxcursor.coords = -298,-35,298,6
+menu.boxcursor.coords = -15,-39,254,0   ;destaque do item selecionado (hover): cobre a face inteira do botao, colado na borda
 ; These are the sounds for cursor movement
 cursor.move.snd = 100,0
 cursor.done.snd = 100,1
@@ -139,60 +145,186 @@ cancel.snd = 100,2
 ;Title background definition
 [TitleBGdef]
 bgclearcolor = 0,0,0
-
-[TitleBG Background Top]
+[TitleBG Scene]
 type  = normal
-spriteno = 100,0
+spriteno = 300,0
 layerno = 0
-start = 0,0
-tile  = 1,1
-velocity = -1, -1
-window = 0,0, 1279,334
-
-[TitleBG Background Middle]
-type  = normal
-spriteno = 100,1
-layerno = 0
-start = 0,0
-tile  = 1,1
-velocity = -1, -1
-window = 0,335, 1279,631
-
-[TitleBG Background Bottom]
-type  = normal
-spriteno = 100,0
-layerno = 0
-start = 0,0
-tile  = 1,1
-velocity = -1, -1
-window = 0,632, 1279,959
-
-[TitleBG 1]
-type  = normal
-spriteno = 100,0
-layerno = 0
-start = 0,0
-tile  = 1,1
-velocity = -1, -1
-window = 0,332, 1279,334
-trans = add1
-
-[TitleBG 2]
-type  = normal
-spriteno = 100,0
-layerno = 0
-start = 0,0
-tile  = 1,1
-velocity = -1, -1
-window = 0,632, 1279,634
-trans = add1
-
+start = -640,0
+mask = 0
 [TitleBG Title Logo]
 type  = normal
 spriteno = 0,0
 layerno = 0
-start = 0,140
+start = -600,60
 mask = 1
+;--- Nos fundos do Mugen, x=0 e o CENTRO da tela (x=-640 e a borda esquerda) ---
+;--- Botoes do menu (sprites 320,0/1/2 = botao + texto, 282x57; y = 366, 430, 494) ---
+[TitleBG Text 1]
+type  = normal
+spriteno = 320,0
+layerno = 0
+start = -450,330
+mask = 1
+[TitleBG Text 2]
+type  = normal
+spriteno = 320,1
+layerno = 0
+start = -450,394
+mask = 1
+[TitleBG Text 3]
+type  = normal
+spriteno = 320,2
+layerno = 0
+start = -450,458
+mask = 1
+[TitleBG Shine 1]
+type = anim
+actionno = 330
+layerno = 1
+start = -447,333
+window = 193,333, 469,369
+mask = 1
+[TitleBG Shine 2]
+type = anim
+actionno = 331
+layerno = 1
+start = -447,397
+window = 193,397, 469,433
+mask = 1
+[TitleBG Shine 3]
+type = anim
+actionno = 332
+layerno = 1
+start = -447,461
+window = 193,461, 469,497
+mask = 1
+[Begin Action 330] ;brilho passando no botao 1 (ciclo de 240 ticks)
+330,0, -28,0, 2, , A
+330,0, -20,0, 2, , A
+330,0, -12,0, 2, , A
+330,0, -4,0, 2, , A
+330,0, 4,0, 2, , A
+330,0, 12,0, 2, , A
+330,0, 20,0, 2, , A
+330,0, 28,0, 2, , A
+330,0, 36,0, 2, , A
+330,0, 44,0, 2, , A
+330,0, 52,0, 2, , A
+330,0, 60,0, 2, , A
+330,0, 68,0, 2, , A
+330,0, 76,0, 2, , A
+330,0, 84,0, 2, , A
+330,0, 92,0, 2, , A
+330,0, 100,0, 2, , A
+330,0, 108,0, 2, , A
+330,0, 116,0, 2, , A
+330,0, 124,0, 2, , A
+330,0, 132,0, 2, , A
+330,0, 140,0, 2, , A
+330,0, 148,0, 2, , A
+330,0, 156,0, 2, , A
+330,0, 164,0, 2, , A
+330,0, 172,0, 2, , A
+330,0, 180,0, 2, , A
+330,0, 188,0, 2, , A
+330,0, 196,0, 2, , A
+330,0, 204,0, 2, , A
+330,0, 212,0, 2, , A
+330,0, 220,0, 2, , A
+330,0, 228,0, 2, , A
+330,0, 236,0, 2, , A
+330,0, 244,0, 2, , A
+330,0, 252,0, 2, , A
+330,0, 260,0, 2, , A
+330,0, 268,0, 2, , A
+330,0, 276,0, 2, , A
+330,1, 0,0, 162
+
+[Begin Action 331] ;brilho passando no botao 2 (ciclo de 240 ticks)
+330,1, 0,0, 20
+330,0, -28,0, 2, , A
+330,0, -20,0, 2, , A
+330,0, -12,0, 2, , A
+330,0, -4,0, 2, , A
+330,0, 4,0, 2, , A
+330,0, 12,0, 2, , A
+330,0, 20,0, 2, , A
+330,0, 28,0, 2, , A
+330,0, 36,0, 2, , A
+330,0, 44,0, 2, , A
+330,0, 52,0, 2, , A
+330,0, 60,0, 2, , A
+330,0, 68,0, 2, , A
+330,0, 76,0, 2, , A
+330,0, 84,0, 2, , A
+330,0, 92,0, 2, , A
+330,0, 100,0, 2, , A
+330,0, 108,0, 2, , A
+330,0, 116,0, 2, , A
+330,0, 124,0, 2, , A
+330,0, 132,0, 2, , A
+330,0, 140,0, 2, , A
+330,0, 148,0, 2, , A
+330,0, 156,0, 2, , A
+330,0, 164,0, 2, , A
+330,0, 172,0, 2, , A
+330,0, 180,0, 2, , A
+330,0, 188,0, 2, , A
+330,0, 196,0, 2, , A
+330,0, 204,0, 2, , A
+330,0, 212,0, 2, , A
+330,0, 220,0, 2, , A
+330,0, 228,0, 2, , A
+330,0, 236,0, 2, , A
+330,0, 244,0, 2, , A
+330,0, 252,0, 2, , A
+330,0, 260,0, 2, , A
+330,0, 268,0, 2, , A
+330,0, 276,0, 2, , A
+330,1, 0,0, 142
+
+[Begin Action 332] ;brilho passando no botao 3 (ciclo de 240 ticks)
+330,1, 0,0, 40
+330,0, -28,0, 2, , A
+330,0, -20,0, 2, , A
+330,0, -12,0, 2, , A
+330,0, -4,0, 2, , A
+330,0, 4,0, 2, , A
+330,0, 12,0, 2, , A
+330,0, 20,0, 2, , A
+330,0, 28,0, 2, , A
+330,0, 36,0, 2, , A
+330,0, 44,0, 2, , A
+330,0, 52,0, 2, , A
+330,0, 60,0, 2, , A
+330,0, 68,0, 2, , A
+330,0, 76,0, 2, , A
+330,0, 84,0, 2, , A
+330,0, 92,0, 2, , A
+330,0, 100,0, 2, , A
+330,0, 108,0, 2, , A
+330,0, 116,0, 2, , A
+330,0, 124,0, 2, , A
+330,0, 132,0, 2, , A
+330,0, 140,0, 2, , A
+330,0, 148,0, 2, , A
+330,0, 156,0, 2, , A
+330,0, 164,0, 2, , A
+330,0, 172,0, 2, , A
+330,0, 180,0, 2, , A
+330,0, 188,0, 2, , A
+330,0, 196,0, 2, , A
+330,0, 204,0, 2, , A
+330,0, 212,0, 2, , A
+330,0, 220,0, 2, , A
+330,0, 228,0, 2, , A
+330,0, 236,0, 2, , A
+330,0, 244,0, 2, , A
+330,0, 252,0, 2, , A
+330,0, 260,0, 2, , A
+330,0, 268,0, 2, , A
+330,0, 276,0, 2, , A
+330,1, 0,0, 122
 
 ;----------------------------
 [Infobox] ;(new in MUGEN 1.0)
@@ -226,11 +358,11 @@ fadeout.time = 10
 rows = 4
 columns = 3
 wrapping = 0              ;1 to let cursor wrap around
-pos = 480,128             ;Position to draw to
+pos = 460,98              ;Position to draw to (recentralizado p/ o novo espacamento: 3*100+2*30=360 de largura)
 showemptyboxes = 1        ;1 to show empty boxes
 moveoveremptyboxes = 1    ;1 to allow cursor to move over empty boxes
 cell.size = 100,100       ;x,y size of each cell (in pixels)
-cell.spacing = 10         ;Space between each cell
+cell.spacing = 30         ;Space between each cell (era 10; cursor ativo tem ate 132px e invadia as celulas vizinhas)
 cell.bg.spr = 150,0       ;Note: Don't use animation for cells
 cell.random.spr = 151,0   ;Icon for random select (don't use animation)
 cell.random.switchtime = 4;Time to wait before changing to another random portrait
@@ -254,8 +386,8 @@ cancel.snd = 100,2
 portrait.spr = 9000,0     ;Do not change from 9000,0
 portrait.offset = 0,0
 portrait.scale = 1,1
-title.offset = 640,38     ;Position of title (Arcade Mode, etc)
-title.font = 4,0,0        ;Font of title (-1 for none)
+title.offset = 640,50     ;Position of title (Arcade Mode, etc)
+title.font = 9,0,0, 52, 150, 20  ;Font of title (-1 for none) - 64px, amarelo pra destacar
 ;Big portraits
 p1.face.spr = 9000,1      ;Do not change from 9000,1
 p1.face.offset = 0,0      ;Position to put big portrait
@@ -269,32 +401,32 @@ p2.face.facing = -1
 p2.face.window = 540,0, 1279,959
 ;Name
 p1.name.offset = 50,620   ;Position to put name
-p1.name.font = 3,3,1      ;Set to -1 for no display
+p1.name.font = 8,0,1, 137,233,1      ;Set to -1 for no display
 p1.name.spacing = 15,25   ;Space between each name for players on the same team
 p2.name.offset = 1230,620
-p2.name.font = 3,1,-1
+p2.name.font = 8,0,-1, 255,130,95
 p2.name.spacing = -15,25
 ;Stage select
 stage.pos = 640,700
-stage.active.font = 3,0,0
-stage.active2.font = 3,2  ;Second font color for blinking
-stage.done.font = 3,0
+stage.active.font = 7,0,0
+stage.active2.font = 7,0,0, 137,233,1  ;Second font color for blinking (verde-limao do logo)
+stage.done.font = 7,0,0
 ;Team menu
 teammenu.move.wrapping = 1
 p1.teammenu.pos = 80, 130
 ;p1.teammenu.bg.spr =
-p1.teammenu.selftitle.font = 3,3, 1
+p1.teammenu.selftitle.font = 7,0, 1, 12,34,20
 p1.teammenu.selftitle.text = "TEAM MODE"
-p1.teammenu.enemytitle.font = 3,3, 1
+p1.teammenu.enemytitle.font = 7,0, 1, 12,34,20
 p1.teammenu.enemytitle.text = "TEAM MODE"
 p1.teammenu.move.snd = 100,0
 p1.teammenu.value.snd = 100,0
 p1.teammenu.done.snd = 100,1
 p1.teammenu.item.offset = 0,110
 p1.teammenu.item.spacing = 0,60
-p1.teammenu.item.font = 3,0, 1
-p1.teammenu.item.active.font = 3,3, 1
-p1.teammenu.item.active2.font = 3,3, 1, 224,224,240 ;Second font color for blinking
+p1.teammenu.item.font = 7,0, 1, 70,105,80
+p1.teammenu.item.active.font = 7,0, 1, 12,34,20
+p1.teammenu.item.active2.font = 7,0, 1, 40,80,45 ;Second font color for blinking
 p1.teammenu.item.cursor.offset = -30, 0
 p1.teammenu.item.cursor.anim = 180
 p1.teammenu.value.icon.offset = 210,1
@@ -305,18 +437,18 @@ p1.teammenu.value.spacing = 30,0
 ;p2 team
 p2.teammenu.pos = 1200, 130
 ;p2.teammenu.bg.spr =
-p2.teammenu.selftitle.font = 3,1, -1
+p2.teammenu.selftitle.font = 7,0, -1, 12,34,20
 p2.teammenu.selftitle.text = "TEAM MODE"
-p2.teammenu.enemytitle.font = 3,1, -1
+p2.teammenu.enemytitle.font = 7,0, -1, 12,34,20
 p2.teammenu.enemytitle.text = "TEAM MODE"
 p2.teammenu.move.snd = 100,0
 p2.teammenu.value.snd = 100,0
 p2.teammenu.done.snd = 100,1
 p2.teammenu.item.offset = 0,110
 p2.teammenu.item.spacing = 0,60
-p2.teammenu.item.font = 3,0, -1
-p2.teammenu.item.active.font = 3,1, -1
-p2.teammenu.item.active2.font = 3,1, -1, 224,224,240 ;Second font color for blinking
+p2.teammenu.item.font = 7,0, -1, 70,105,80
+p2.teammenu.item.active.font = 7,0, -1, 12,34,20
+p2.teammenu.item.active2.font = 7,0, -1, 40,80,45 ;Second font color for blinking
 p2.teammenu.item.cursor.offset = 30, 0
 p2.teammenu.item.cursor.anim = 190
 p2.teammenu.value.icon.offset = -210,1
@@ -371,43 +503,12 @@ p2.teammenu.value.spacing = -30,0
 [SelectBGdef]
 ;spr = graphics/selectbg.sff  ;Filename of sprite data
 
-[SelectBG 0] ;Scrolling background
+[SelectBG 0] ;mesmo fundo liso da tela inicial (nos fundos do Mugen x=0 e o centro, entao -640 = borda esquerda)
 type  = normal
-spriteno = 100,0
+spriteno = 300,0
 layerno = 0
-start = 0,0
-tile  = 1,1
-velocity = -1, -1
-
-[SelectBG 2.A] ;Title background
-type  = normal
-spriteno = 102,0
-layerno = 0
-start = 0, 4
-delta = 0,0
-tile  = 1,3
-trans = sub
-velocity = -1, 0
-
-[SelectBG 2.B] ;Title background B
-type  = normal
-spriteno = 102,1
-layerno = 0
-start = 0, 4
-delta = 0,0
-tile  = 1,3
-trans = add
-velocity = -3, 0
-
-[SelectBG 2.C] ;Title background C
-type  = normal
-spriteno = 102,2
-layerno = 0
-start = 0, 4
-delta = 0,0
-tile  = 1,3
-trans = add
-velocity = -9, 0
+start = -640,0
+mask = 0
 
 ;-------------------------------------------------------------------
 [VS Screen]
@@ -417,7 +518,7 @@ fadeout.time = 25
 ;Match text in arcade modes
 match.text = "Match %i"   ;%i can be used for the match number
 match.offset = 20, 709
-match.font = 2,0,1
+match.font = 7,0,1
 ;Big portraits
 p1.spr = 9000, 1
 p1.offset =  60,30
@@ -431,11 +532,11 @@ p2.scale = 1,1
 p2.window = 741,30, 1220,589
 ;Names
 p1.name.offset = 110,650  ;Position to put name
-p1.name.font = 3,3,1      ;Set to -1 for no display
-p1.name.spacing = 0,44    ;Space between each name for players on the same team
+p1.name.font = 8,0,1, 137,233,1      ;Set to -1 for no display
+p1.name.spacing = 0,56    ;Space between each name for players on the same team
 p2.name.offset = 1170,650
-p2.name.font = 3,1,-1
-p2.name.spacing = 0,44
+p2.name.font = 8,0,-1, 255,130,95
+p2.name.spacing = 0,56
 
 ;-----------------------
 ;VS Match up screen background
@@ -589,7 +690,7 @@ velocity = -.25,0
 ;-------------------------------------------------------------------
 ;Demo mode definition
 [Demo Mode]
-enabled = 1               ;Set to 1 to enable demo mode, 0 to disable
+enabled = 0               ;Set to 1 to enable demo mode, 0 to disable
 select.enabled = 0        ;Set to 1 to display select screen, 0 to disable
 vsscreen.enabled = 0      ;Set to 1 to display versus screen, 0 to disable
 title.waittime = 600      ;Time to wait at title before starting demo mode
@@ -603,24 +704,24 @@ debuginfo = 0             ;Set to 0 to hide debugging info (debug mode only)
 ;-------------------------------------------------------------------
 ;Continue screen definition
 [Continue Screen]
-enabled = 1               ;Set to 1 to show continue screen, 0 to disable
+enabled = 0               ;Set to 1 to show continue screen, 0 to disable
 pos = 640,240             ;Position
 ;***Known issue*** The display elements below use the fight.def resources
 ;instead of the ones defined in this file.
-continue.text = "CONTINUE?"
+continue.text = "CONTINUAR?"
 continue.font = 1,0,0
 continue.offset = 0,0
 ;Inactive and active (selected) YES/NO text
-yes.text = "YES"
+yes.text = "SIM"
 yes.font = 1,0,0, 128,128,128
 yes.offset = -80, 60
-yes.active.text = "YES"
+yes.active.text = "SIM"
 yes.active.font = 1,3,0
 yes.active.offset = -80, 60
 no.text = "NO"
 no.font = 1,0,0, 128,128,128
 no.offset = 80, 60
-no.active.text = "NO"
+no.active.text = "NÃO"
 no.active.font = 1,3,0
 no.active.offset = 80, 60
 
@@ -646,11 +747,11 @@ p1.facing = 1
 p1.scale = 1,1
 p1.window = 0,0, 1279,500
 p1.name.offset = 40,570
-p1.name.font = 3,3,1
+p1.name.font = 8,0,1, 137,233,1
 ;Win quote text
-winquote.text = "Winner!" ;Default win quote text to show
+winquote.text = "VENCEDOR!" ;Default win quote text to show
 winquote.offset = 40,615
-winquote.font = 5,0,1
+winquote.font = 7,0,1
 winquote.window = 38,521, 1241,708
 winquote.textwrap = w     ;Word wrap
 
@@ -687,9 +788,9 @@ velocity = 0,1.5
 ;This is the screen that is shown when you win in arcade mode.
 ;It will not be displayed if the winning character has an ending.
 [Win Screen]
-enabled = 1               ;Set to 1 to show win screen, 0 to disable
+enabled = 0               ;Set to 1 to show win screen, 0 to disable
 wintext.text = "Congratulations!"
-wintext.font = 3,0,0
+wintext.font = 7,0,0
 wintext.offset = 640,240
 wintext.displaytime = -1
 wintext.layerno = 2
@@ -717,9 +818,9 @@ storyboard =              ;Credits storyboard filename
 ;This is the screen that is shown when you win in survival mode.
 ;It will not be displayed if the winning character has an ending.
 [Survival Results Screen]
-enabled = 1
+enabled = 0
 winstext.text = "Rounds survived: %i"  ;Use %i for win counter
-winstext.font = 3,0,0
+winstext.font = 7,0,0
 winstext.offset = 640,240
 winstext.displaytime = -1
 winstext.layerno = 2
@@ -733,8 +834,8 @@ roundstowin = 5           ;Number of rounds to get win pose (lose pose otherwise
 [Option Info]
 fadein.time = 10
 fadeout.time = 10
-title.offset = 640,38
-title.font = 4,0,0
+title.offset = 640,50
+title.font = 9,0,0, 255,214,10
 cursor.move.snd = 100,0
 cursor.done.snd = 100,1
 cancel.snd = 100,2

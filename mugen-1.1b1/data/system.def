@@ -90,15 +90,15 @@ menu.item.spacing = 0, 13
 ; Names for each of the items in the menu. Names must be in quotes.
 ; Use "" to disable an item. If all are disabled, goes straight to demo mode
 ; (hold Esc to quit demos).
-menu.itemname.arcade = "ARCADE"
+menu.itemname.arcade = ""
 menu.itemname.versus = "VS MODE"
-menu.itemname.teamarcade = "TEAM ARCADE"
-menu.itemname.teamversus = "TEAM VS"
-menu.itemname.teamcoop = "TEAM CO-OP"
-menu.itemname.survival = "SURVIVAL"
-menu.itemname.survivalcoop = "SURVIVAL CO-OP"
-menu.itemname.training = "TRAINING"
-menu.itemname.watch = "WATCH"
+menu.itemname.teamarcade = ""
+menu.itemname.teamversus = ""
+menu.itemname.teamcoop = ""
+menu.itemname.survival = ""
+menu.itemname.survivalcoop = ""
+menu.itemname.training = ""
+menu.itemname.watch = ""
 menu.itemname.options = "OPTIONS"
 menu.itemname.exit = "EXIT"
 ; These parameters define the window in which the items are visible
@@ -209,73 +209,6 @@ stage.pos = 160,237
 stage.active.font = 3,0,0
 stage.active2.font = 3,2  ;Second font color for blinking
 stage.done.font = 3,0
-;Team menu
-teammenu.move.wrapping = 1
-p1.teammenu.pos = 20, 30
-;p1.teammenu.bg.spr =
-p1.teammenu.selftitle.font = 3,0, 1
-p1.teammenu.selftitle.text = Select team mode
-p1.teammenu.enemytitle.font = 3,0, 1
-p1.teammenu.enemytitle.text = Opponent team mode
-p1.teammenu.move.snd = 100,0
-p1.teammenu.value.snd = 100,0
-p1.teammenu.done.snd = 100,1
-p1.teammenu.item.offset = 0,20
-p1.teammenu.item.spacing = 0,15
-p1.teammenu.item.font = 3,0, 1
-p1.teammenu.item.active.font = 3,3, 1
-p1.teammenu.item.active2.font = 3,0, 1 ;Second font color for blinking
-p1.teammenu.item.cursor.offset = -10, 0
-p1.teammenu.item.cursor.anim = 180
-p1.teammenu.value.icon.offset = 60,1
-p1.teammenu.value.icon.spr = 181,0
-p1.teammenu.value.empty.icon.offset = 60,1
-p1.teammenu.value.empty.icon.spr = 182,0
-p1.teammenu.value.spacing = 6,0
-;p2 team
-p2.teammenu.pos = 299, 30
-;p2.teammenu.bg.spr =
-p2.teammenu.selftitle.font = 3,0, -1
-p2.teammenu.selftitle.text = Select team mode
-p2.teammenu.enemytitle.font = 3,0, -1
-p2.teammenu.enemytitle.text = Opponent team mode
-p2.teammenu.move.snd = 100,0
-p2.teammenu.value.snd = 100,0
-p2.teammenu.done.snd = 100,1
-p2.teammenu.item.offset = 0,20
-p2.teammenu.item.spacing = 0,15
-p2.teammenu.item.font = 3,0, -1
-p2.teammenu.item.active.font = 3,1, -1
-p2.teammenu.item.active2.font = 3,0, -1 ;Second font color for blinking
-p2.teammenu.item.cursor.offset = 10, 0
-p2.teammenu.item.cursor.anim = 190
-p2.teammenu.value.icon.offset = -60,1
-p2.teammenu.value.icon.spr = 191,0
-p2.teammenu.value.empty.icon.offset = -60,1
-p2.teammenu.value.empty.icon.spr = 192,0
-p2.teammenu.value.spacing = -6,0
-;Sounds
-
-[Begin Action 180] ;P1 Team mode cursor
-180,0, 0,0, 1
-180,0, 1,0, 1
-180,0, 2,0, 1
-180,0, 3,0, 1
-180,0, 4,0, 1
-180,0, 5,0, 1
-180,0, 6,0, 1
-180,0, 7,0, 1
-
-[Begin Action 190] ;P2 Team mode cursor
-190,0, 0,0, 1
-190,0,-1,0, 1
-190,0,-2,0, 1
-190,0,-3,0, 1
-190,0,-4,0, 1
-190,0,-5,0, 1
-190,0,-6,0, 1
-190,0,-7,0, 1
-
 ;-----------------------
 ;Character select screen background
 [SelectBGdef]
@@ -404,7 +337,7 @@ start = 0,95
 ;-------------------------------------------------------------------
 ;Demo mode definition
 [Demo Mode]
-enabled = 1               ;Set to 1 to enable demo mode, 0 to disable
+enabled = 0               ;Set to 1 to enable demo mode, 0 to disable
 select.enabled = 0        ;Set to 1 to display select screen, 0 to disable
 vsscreen.enabled = 0      ;Set to 1 to display versus screen, 0 to disable
 title.waittime = 600      ;Time to wait at title before starting demo mode
@@ -418,7 +351,7 @@ debuginfo = 0             ;Set to 0 to hide debugging info (debug mode only)
 ;-------------------------------------------------------------------
 ;Continue screen definition
 [Continue Screen]
-enabled = 1               ;Set to 1 to show continue screen, 0 to disable
+enabled = 0               ;Set to 1 to show continue screen, 0 to disable
 
 ;-------------------------------------------------------------------
 ;Game over screen definition
@@ -484,7 +417,7 @@ velocity = 0, 0
 ;This is the screen that is shown when you win in arcade mode.
 ;It will not be displayed if the winning character has an ending.
 [Win Screen]
-enabled = 1               ;Set to 1 to show win screen, 0 to disable
+enabled = 0               ;Set to 1 to show win screen, 0 to disable
 wintext.text = "Congratulations!"
 wintext.font = 2,0,0
 wintext.offset = 159,70
@@ -514,7 +447,7 @@ storyboard =              ;Credits storyboard filename
 ;This is the screen that is shown when you win in survival mode.
 ;It will not be displayed if the winning character has an ending.
 [Survival Results Screen]
-enabled = 1
+enabled = 0
 winstext.text = "Rounds survived: %i"  ;Use %i for win counter
 winstext.font = 3,0,0
 winstext.offset = 159,70

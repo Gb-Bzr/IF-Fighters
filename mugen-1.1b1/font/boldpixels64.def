@@ -1,0 +1,13 @@
+﻿[FNT v2]
+fntversion = 2,00
+name = "BoldPixels 64"
+author = "BoldPixels (CC BY-SA 4.0)"
+
+[Def]
+Type = truetype
+; A fonte foi desenhada numa grade de 16 px: usar tamanho multiplo de 16 mantem os pixels nitidos (32 = 2x, 64 = 4x)
+Size = 64,64
+Spacing = 0,0
+Offset = 0,0
+File = BoldPixels.ttf
+Blend = 0
